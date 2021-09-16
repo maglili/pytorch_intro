@@ -2,11 +2,12 @@
 
 ###### tags: `Pytorch Tutorial`, `Deep Learning`
 
-:::info
+[Colab version](./mnist_tutorial.ipynb)
+
 :bulb: **提示**:
+
 1. 可先打開 colab 並將執行階段改為 GPU，搭配實作能更快速上手。
 2. 預估時間: 1h 30m
-:::
 
 **教學目標:**
 
@@ -15,12 +16,12 @@
 - [ ] 利用 Pytorch 建立 CNN model
 - [ ] 利用 Pytorch Pretrained model 進行 Transfer Learning
 
-
 ## Part 1: Basic Introduction
 
 ### Why Pytorch?
 
 Pros:
+
 1. 相較於 keras，Pytorch 有較大自訂彈性
 2. 比 tensorflow 更容易閱讀與編寫
 3. 比 tensorflow 容易安裝 (CUDA 與 cudnn 支援度比較高)
@@ -28,6 +29,7 @@ Pros:
 5. 龐大的社群資源
 
 Cons:
+
 1. 比 keras 底層，需要更多學習時間
 2. 發展比 tensorflow 晚
 
@@ -42,7 +44,8 @@ Cons:
 依照官網選擇你電腦的 os、安裝方式、版本...即可。
 
 若要安裝CPU version， CUDA 選項請選擇 None。
-![](https://i.imgur.com/tcw6ilY.png)
+
+![CUDA](https://i.imgur.com/tcw6ilY.png)
 
 #### GPU version
 
@@ -52,17 +55,17 @@ Cons:
 CUDA: [cuda-toolkit-archive](https://developer.nvidia.com/cuda-toolkit-archive)
 cuDNN: [cuDNN Download](https://developer.nvidia.com/rdp/cudnn-archive)
 
-:::info
 :bulb: **提示**:
+
 1. 須注意 Torch 1.7.1 版只支援 CUDA : 9.2, 10.1, 10.2, 11.0。
 2. 依照 CUDA 版本來安裝對應的 cuDNN。
-:::
 
 只要選擇對應 CUDA 版本的 Pytorch 即可。
 
 ##### Check if CUDA version Pytorch installation succeed
 
 若是有正確安裝 CUDA 版本的 Pytorch，則會回傳 True。
+
 ```python
 #Boolean, True if GPU avalible.
 torch.cuda.is_available()
@@ -71,6 +74,7 @@ torch.cuda.is_available()
 #### Colab
 
 不須特別設定或是安裝 Pytorch，可以直接使用。
+
 ```python
 import torch
 torch.__version__
@@ -78,7 +82,7 @@ torch.__version__
 
 ### 免費GPU平台
 
-#### Colab
+**Colab:**
 
 ![Colab](https://i.imgur.com/UTOmejr.png)
 
@@ -91,7 +95,7 @@ Cons:
 1. GPU 超過使用時間會斷線
 2. GPU 是隨機分配
 
-#### Kaggle
+**Kaggle:**
 
 ![Kaggle](https://i.imgur.com/k1VCXrK.png)
 
@@ -109,6 +113,7 @@ Cons:
 這邊僅簡單介紹基礎語法，更深入了解請參考: [DEEP LEARNING WITH PYTORCH: A 60 MINUTE BLITZ](https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html)
 
 ### Tensor
+
 Tensor 是在 Pytorch 中，用來進行計算的物件，類似 Pytorch 版本的 numpy array，但不完全一樣。
 
 參考資料: [TORCH.TENSOR](https://pytorch.org/docs/stable/tensors.html)
@@ -129,25 +134,30 @@ print('\nc:\n', c)
 d = torch.zeros(4,2)
 print('\nd:\n', d)
 ```
+
 ### Layers and Activation function
+
 查看官方的說明文件可以快速了解用法。
 
 **Pytorch document:**
+
 - Layers:
-    - [Conv2d](https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html)
-    - [MaxPool2d](https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html#torch.nn.MaxPool2d)
-    - [Flatten](https://pytorch.org/docs/stable/generated/torch.nn.Flatten.html#torch.nn.Flatten)
-    - [Linear](https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear)
-    - [BatchNorm2d (optional)](https://pytorch.org/docs/stable/generated/torch.nn.BatchNorm2d.html#torch.nn.BatchNorm2d)
-    - [Dropout (optional)](https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html#torch.nn.Dropout)
+  - [Conv2d](https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html)
+  - [MaxPool2d](https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html#torch.nn.MaxPool2d)
+  - [Flatten](https://pytorch.org/docs/stable/generated/torch.nn.Flatten.html#torch.nn.Flatten)
+  - [Linear](https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear)
+  - [BatchNorm2d (optional)](https://pytorch.org/docs/stable/generated/torch.nn.BatchNorm2d.html#torch.nn.BatchNorm2d)
+  - [Dropout (optional)](https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html#torch.nn.Dropout)
 - Activation function:
-    - [Sigmoid](https://pytorch.org/docs/stable/generated/torch.nn.Sigmoid.html#torch.nn.Sigmoid)
-    - [ReLU](https://pytorch.org/docs/stable/generated/torch.nn.ReLU.html#torch.nn.ReLU)
-    - [Tanh](https://pytorch.org/docs/stable/generated/torch.nn.Tanh.html#torch.nn.Tanh)
-    
+  - [Sigmoid](https://pytorch.org/docs/stable/generated/torch.nn.Sigmoid.html#torch.nn.Sigmoid)
+  - [ReLU](https://pytorch.org/docs/stable/generated/torch.nn.ReLU.html#torch.nn.ReLU)
+  - [Tanh](https://pytorch.org/docs/stable/generated/torch.nn.Tanh.html#torch.nn.Tanh)
+
 #### Convolution
+
 ##### 實作
-```python=
+
+```python
 import torch
 import torch.nn as nn
 
@@ -163,7 +173,8 @@ print('output:\n',output)
 ```
 
 ##### [optional] 實際例子
-```python=
+
+```python
 import torch
 torch.manual_seed(0) # keep random seed
 import urllib
@@ -197,7 +208,8 @@ plt.imshow(input_tensor.permute(1,2,0).cpu().detach().numpy())
 plt.title('sample image')
 plt.show()
 ```
-```python=
+
+```python
 import matplotlib.pylab as plt # plot module
 import numpy as np
 
@@ -223,11 +235,14 @@ for i in range(1, columns//2 * rows + 1):
 
 plt.show()
 ```
-#### Pooling
-##### 實作
-<img src = "https://s3-api.us-geo.objectstorage.softlayer.net/cf-courses-data/CognitiveClass/DL0110EN/notebook_images%20/chapter%206/6.1.3_max_pool_animation_2.gif" width = 500, align = "center"> 
 
-```python=
+#### Pooling
+
+##### 實作
+
+<img src = "https://s3-api.us-geo.objectstorage.softlayer.net/cf-courses-data/CognitiveClass/DL0110EN/notebook_images%20/chapter%206/6.1.3_max_pool_animation_2.gif" width = 500, align = "center">
+
+```python
 image1=torch.zeros(1,1,4,4)
 image1[0,0,0,:]=torch.tensor([1.0,2.0,3.0,-4.0])
 image1[0,0,1,:]=torch.tensor([0.0,2.0,-3.0,0.0])
@@ -238,8 +253,10 @@ print('image1:\n',image1)
 max1=torch.nn.MaxPool2d(2) # 實體化池化層
 print('output:\n',max1(image1))
 ```
+
 ##### [optional] 實際例子
-```python=
+
+```python
 maxpool_layer = model.maxpool # 提取 resnet 中的 maxpool 層
 maxpool_images = maxpool_layer(conv_images) # 將過完 convolution 後的圖片丟入 maxpool 層，得到結果
 print('\n[印出前 8 個過完 convolution 以及再過完 max pooling 的圖片]:\n')
@@ -257,16 +274,20 @@ for i in range(1, columns//2 * rows + 1):
 
 plt.show()
 ```
+
 #### Flatten
-```python=
+
+```python
 image = torch.tensor([[[1,2,3],[4,5,6],[7,8,9]]])
 print('image:\n',image)
 
 m = nn.Flatten() # 實體化Flatten層
 print(m(image))
 ```
+
 #### Fully conntected layer(Dense)
-```python=
+
+```python
 input = torch.tensor([[1.,2.,3.,4.,5.]], requires_grad=True)
 print('input:\n',input)
 
@@ -276,9 +297,10 @@ print('output:\n',output)
 ```
 
 #### Activation layer
+
 同樣的 input 經過不同的 activation layer 後，得到不同的結果。
 
-```python=
+```python
 input = torch.tensor([[-5,-1,0,3,8]]).float()
 print('Input:',input)
 print('-'*50)
@@ -300,12 +322,16 @@ softmax = nn.Softmax(dim=1)  # 實體化Softmax層(一般用在最後一層輸�
 out4 = softmax(input)
 print('Softmax:', out4)
 ```
+
 ## Part 3: MNIST
+
 本節目標是使用 Pytorch 建立 LaNet-5 model，在 MNIST 資料集進行訓練與預測。
 
 ### 資料準備與前處理
+
 #### 引入所需 module
-```python=
+
+```python
 import torch  
 torch.manual_seed(0) # keep random seed
 import torch.nn as nn 
@@ -317,20 +343,26 @@ from tqdm.notebook import tqdm
 ```
 
 #### 多個前處理結合在變數 composed 中
+
 1. resize()，將大小28x28的圖片轉成32*32
 2. ToTensor()，把圖片轉成tensor(張量)才可以丟入model
 
 參考資料: [transforms.Compose](https://pytorch.org/docs/stable/torchvision/transforms.html#torchvision.transforms.Compose)
-```python=
+
+```python
 IMAGE_SIZE = 32 # Original size: 28
 composed = transforms.Compose([transforms.Resize((IMAGE_SIZE, IMAGE_SIZE))\ 
                             ,transforms.ToTensor(),])
 ```
+
 #### 下載MNIST資料並將資料前處理
+
 MNIST共包含了:
+
 1. 6萬張的Training data
 2. 1萬張的Testing data
-```python=
+
+```python
 train_dataset = dsets.MNIST(root='./data',\
                             train=True,\
                             download=True,\
@@ -346,22 +378,27 @@ print('Length of validation_dataset:', len(validation_dataset))
 ```
 
 #### 定義用來檢視 MNIST 資料的function
+
 可利用這個 function 查看 MNIST 圖片。
-```python=
+
+```python
 def show_data(data_sample):
     plt.imshow(data_sample[0].numpy().reshape(IMAGE_SIZE, IMAGE_SIZE), cmap='gray')
     plt.title('y = '+ str(data_sample[1]))
 ```
 
 查看圖片
-```python=
+
+```python
 num = 8 #<--- Any number you want 
 show_data(train_dataset[num])
 ```
 
 ### Defining model
+
 #### 選擇GPU進行訓練
-```python=
+
+```python
 if torch.cuda.is_available():
   device = torch.device('cuda:0')
   print('GPU is avalible.')
@@ -373,17 +410,19 @@ else:
 ```
 
 #### [Try yourself] 定義模型
-**請依照 LaNet-5 的架構圖，建立 model**
+
+**請依照 LaNet-5 的架構圖，建立 model:**
+
 1. 需先求出 Kernel size。
 2. Subsampling 使用 Average Pooling。
 3. Stride 為 1。
 
 ![LaNet-5](https://miro.medium.com/max/4308/1*vUJ-XilD6_WECeQlOMThMQ.png)
 
-Formula: 
-$$
-[\frac{(W−K+2P)}{S}]+1
-$$
+**Formula:**
+
+$$[\frac{(W−K+2P)}{S}]+1$$
+
 - W is the input volume - in this case 32
 - K is the Kernel size - in this case 5
 - P is the padding - in this case 0
@@ -391,7 +430,7 @@ $$
 
 In LeNet-5, $[(32 - 5 + 0)/1] + 1 = 28$
 
-```pythpn=
+```python
 model = nn.Sequential(
         #===============START====================
         nn.Conv2d(in_channels=1,out_channels=6,kernel_size=5),
@@ -406,17 +445,20 @@ model.to(device) # moving to GPU
 ```
 
 #### 檢視模型資訊
-```python=
+
+```python
 from torchsummary import summary
 summary(model, (1, 32, 32))
 ```
 
 #### 定義超參數
+
 1. loss function
 2. learning rate
 3. optimizer
 4. batch size
-```python=
+
+```python
 criterion = nn.CrossEntropyLoss()
 learning_rate = 0.0005
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
@@ -425,9 +467,10 @@ validation_loader = torch.utils.data.DataLoader(dataset=validation_dataset, batc
 ```
 
 #### 定義訓練函式
+
 不同於 Keras 只需使用 model.fit()，Pytorch的訓練需要自己寫一個迴圈。
 
-```python=
+```python
 def train_model(model,train_loader,validation_loader,optimizer,n_epochs=4): 
 
   N_train=len(train_dataset) 
@@ -473,22 +516,25 @@ def train_model(model,train_loader,validation_loader,optimizer,n_epochs=4):
      
   return  train_acc, cv_acc, train_loss, cv_loss
 ```
- 
+
 #### 訓練模型
-```python=
+
+```python
 train_acc, cv_acc, train_loss, cv_loss = train_model(model=model,n_epochs=4,train_loader=train_loader,validation_loader=validation_loader,optimizer=optimizer)
 ```
 
 #### Learning Curve
-訓練圖
-```python=
+
+**訓練圖:**
+
+```python
 plt.plot(train_acc,label='train_acc')
 plt.plot(cv_acc ,label='cv_acc')
 plt.title('train / valid  accuracy')
 plt.xlabel('epochs')
 plt.ylabel('acc')
-#axes = plt.gca()
-#axes.set_ylim([0.4, 1])
+axes = plt.gca()
+axes.set_ylim([0.4, 1])
 plt.legend()
 plt.grid()
 plt.show()
@@ -504,40 +550,44 @@ plt.legend()
 plt.grid()
 plt.show()
 ```
-模型數據
-```python=
+
+**模型數據:**
+
+```python
 print('[Training] ACC:',train_acc[-1])
 print('[Training] LOSS:',train_loss[-1])
 print('-'*10)
 print('[Test] ACC:',cv_acc[-1])
 print('[Test] LOSS:',cv_loss[-1])
 ```
+
 ## Part 4: 建立自己的CNN模型
+
 試著自己拚出一個 model，須注意每一層的輸出維度!
 
 **Formula:**
-$$
-[\frac{(W−K+2P)}{S}]+1
-$$
+
+$$[\frac{(W−K+2P)}{S}]+1$$
 
 - W is the input volume - in this case 32
-- K is the Kernel size 
-- P is the padding 
-- S is the stride 
+- K is the Kernel size
+- P is the padding
+- S is the stride
 
+**嘗試使用:**
 
-嘗試使用:
 - nn.Conv2d()
 - nn.AvgPool2d() / nn.MaxPool2d()
 - nn.BatchNorm2d()
 - nn.ReLU() / nn.Tanh() / nn.sigmoid()
 - nn.Linear()
 - nn.Flatten()
-- 
+
 更多資訊請看官方說明 <a href="https://pytorch.org/docs/stable/nn.html">torch.nn</a>
 
 **參考範例:**
-```
+
+```python
 my_model = nn.Sequential(
         nn.Conv2d(in_channels=1,out_channels=6,kernel_size=5),
         nn.BatchNorm2d(6),
@@ -548,8 +598,10 @@ my_model = nn.Sequential(
         nn.Linear(1176,10)
         )
 ```
+
 ### [Try yourself] 建立 model
-```python=
+
+```python
 my_model = nn.Sequential(
         #============================START================================
         nn.Conv2d(#modify here),
@@ -562,7 +614,9 @@ summary(my_model, (1, 32, 32))
 ```
 
 ### [Try yourself] 定義超參數
-試著更換:
+
+**試著更換:**
+
 - learning_rate
 - optimizer
 - batch_size
@@ -570,15 +624,17 @@ summary(my_model, (1, 32, 32))
 <a href="https://pytorch.org/docs/stable/optim.html">pytorch: optimizer</a>
 
 **參考範例:**
-```
+
+```python
 learning_rate = 0.0005
 optimizer = torch.optim.Adam(my_model.parameters(), lr=learning_rate)
 train_loader = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=64)
 validation_loader = torch.utils.data.DataLoader(dataset=validation_dataset, batch_size=1024)
 ```
 
-實作
-```python=
+**實作:**
+
+```python
 # modify yourself
 #============================START================================
 learning_rate = #modify here
@@ -591,8 +647,10 @@ validation_loader = torch.utils.data.DataLoader(dataset=validation_dataset, batc
 
 train_acc, cv_acc, train_loss, cv_loss = train_model(model=my_model,n_epochs=4,train_loader=train_loader,validation_loader=validation_loader,optimizer=optimizer)
 ```
-Learning curve
-```python=
+
+**Learning curve:**
+
+```python
 plt.plot(train_acc,label='train_acc')
 plt.plot(cv_acc ,label='cv_acc')
 plt.title('train / valid  accuracy')
@@ -621,11 +679,15 @@ print('-'*10)
 print('[Test] ACC:',cv_acc[-1])
 print('[Test] LOSS:',cv_loss[-1])
 ```
+
 ## Part 5: Pytorch Pretrained model:Transfer Learning
+
 參考資料:
+
 1. [torchvision.models](https://pytorch.org/docs/stable/torchvision/models.html)
 2. [TRANSFER LEARNING FOR COMPUTER VISION TUTORIAL](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)
-```python=
+
+```python
 import torchvision.models as models
 
 model = models.resnext50_32x4d(pretrained=True)
@@ -636,17 +698,21 @@ model.to(device);
 ```
 
 ## [Optional] AlexNet
+
 **AlexNet 架構:**
+
 <hr>
 <img src="https://miro.medium.com/max/3072/1*qyc21qM0oxWEuRaj-XJKcw.png" width="80%">
 
 此部分在預處理時，需先將MNIST轉成RGB channel，並且對圖片做正規化處理，有興趣可以參考前處理的程式碼。
 
-參考資料:
+**參考資料:**
+
 - [Pytorch|AlexNet](https://pytorch.org/hub/pytorch_vision_alexnet/)
 - [原始論文](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)
 
 ### 前處理
+
 ```python
 import torch  # pytorch
 torch.manual_seed(0) # keep random seed
@@ -657,6 +723,7 @@ import matplotlib.pylab as plt # plot module
 import numpy as np # matrix module
 from tqdm.notebook import tqdm # 顯示進度條
 ```
+
 ```python
 if torch.cuda.is_available():
   device = torch.device('cuda:0')
@@ -677,6 +744,7 @@ composed = transforms.Compose([transforms.Resize((IMAGE_SIZE, IMAGE_SIZE)),
                           transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
 ])
 ```
+
 ```python
 train_dataset = dsets.MNIST(root='./data', train=True, download=True, transform=composed)
 validation_dataset = dsets.MNIST(root='./data', train=False, download=True, transform=composed)
@@ -693,13 +761,17 @@ def show_data(data_sample):
     plt.title('y = '+ str(data_sample[1]))
 ```
 
-檢視MNIST圖片
+**檢視MNIST圖片:**
+
 ```python
 num = 8 #<--- Any number you want 
 show_data(train_dataset[num])
 ```
+
 ### [Try yourself] 定義模型
+
 #### [Try yourself] 定義model
+
 ```python
 class AlexNet(nn.Module):
     # Contructor
@@ -720,12 +792,16 @@ model = AlexNet()
 
 model.to(device) # moving to GPU
 ```
+
 #### 檢視模型
-```python=
+
+```python
 from torchsummary import summary
 summary(model, (3, 224, 224))
 ```
+
 #### 訓練函數
+
 ```python
 def train_model(model,train_loader,validation_loader,optimizer,n_epochs=4):
   N_test=len(validation_dataset)
@@ -770,7 +846,9 @@ def train_model(model,train_loader,validation_loader,optimizer,n_epochs=4):
      
   return  train_acc, cv_acc, train_loss, cv_loss
 ```
+
 #### 超參數
+
 ```python
 criterion = nn.CrossEntropyLoss()
 learning_rate = 0.0005
@@ -780,11 +858,13 @@ validation_loader = torch.utils.data.DataLoader(dataset=validation_dataset, batc
 ```
 
 #### 訓練
+
 ```python
 train_acc, cv_acc, train_loss, cv_loss = train_model(model=model,n_epochs=4,train_loader=train_loader,validation_loader=validation_loader,optimizer=optimizer)
 ```
 
 ### Learning curve
+
 ```python
 plt.plot(train_acc,label='train_acc')
 plt.plot(cv_acc ,label='cv_acc')
@@ -808,6 +888,7 @@ plt.legend()
 plt.grid()
 plt.show()
 ```
+
 ```python
 print('[Training] ACC:',train_acc[-1])
 print('[Training] LOSS:',train_loss[-1])
@@ -817,8 +898,11 @@ print('[Test] LOSS:',cv_loss[-1])
 ```
 
 ## 參考答案
+
 ### LaNet-5
-Method 1
+
+**Method 1:**
+
 ```python
 model = nn.Sequential(
           nn.Conv2d(in_channels=1,out_channels=6,kernel_size=5),
@@ -838,7 +922,8 @@ model = nn.Sequential(
 model.to(device) # moving to GPU
 ```
 
-Method 2
+**Method 2:**
+
 ```python
 class CNN(nn.Module):
     # Contructor
@@ -869,6 +954,7 @@ model.to(device) # moving to GPU
 ```
 
 ### AlexNet
+
 ```python
 class AlexNet(nn.Module):
     # Contructor
