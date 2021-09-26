@@ -10,23 +10,27 @@ Building LeNet-5 by pytorch and use MNIST dataset.
 
 ## Structure
 
-- Basic tutorial-1: [mnist_tutorial-1](./notebook/mnist_tutorial.ipynb)
-- Basic tutorial-2: [mnist_tutorial-2](./notebook/Pytorch_tutorial_02_Improve_Neural_Networks.md)
-- Power point: [ppt](./notebook/Mnist_Tutorial.pptx)
-
 ```text
 pytorch_intro/
 ├── main.py
 ├── model.py
-├── notebook
-│   ├── mnist_tutorial.ipynb
-│   ├── Mnist Tutorial.pptx
-│   ├── Pytorch tutorial 01_ MNIST and Pretrained Model.md
-│   └── Pytorch tutorial 02_ Improve Neural Networks.md
 ├── readme.md
 ├── requirements.txt
 ├── tree.txt
 └── utils.py
+```
+
+## Requirement
+
+1. pytorch
+2. matplotlib
+3. torchsummary
+4. tqdm
+
+*Not recommended:*
+
+```bash
+#pip install -r requirements.txt
 ```
 
 ## RUN
@@ -54,3 +58,8 @@ python main.py -m train -bs 64 -epo 4 -lr 5e-4
 ```bash
 python main.py -m pred -bs 64
 ```
+
+## Reference
+
+1. [maglili/dqn-pytorch](https://github.com/maglili/dqn-pytorch)
+2. [maglili/ai_cup-movie_comment](https://github.com/maglili/ai_cup-movie_comment)
