@@ -11,7 +11,7 @@ from tqdm.notebook import tqdm
 from utils import *
 from model import LeNet5
 
-# =================================argparser================================
+# argparser
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "-m",
@@ -47,7 +47,6 @@ parser.add_argument(
     help="learning rate",
 )
 args = parser.parse_args()
-# =================================argparser================================
 
 
 # keep reandom seed
