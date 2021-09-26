@@ -131,7 +131,7 @@ def check_path(fname):
 
 def predict_data(model, data_loader, device):
     """
-    Predicti input data for submission.
+    Predict input data for submission.
     """
     pred = []
     model.eval()

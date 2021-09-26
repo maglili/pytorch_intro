@@ -8,6 +8,8 @@ import matplotlib.pylab as plt
 import numpy as np
 import random
 from tqdm.notebook import tqdm
+
+# custom module
 from utils import *
 from model import LeNet5
 
@@ -83,7 +85,9 @@ if args.mode == "train":
 
     # hyperparameters
     criterion = nn.CrossEntropyLoss()
+
     optimizer = torch.optim.Adam(model.parameters(), lr=args.learning_rate)
+
     train_loader = torch.utils.data.DataLoader(
         dataset=train_dataset, batch_size=args.batch_size
     )
