@@ -7,16 +7,18 @@
 [![Generic badge](https://img.shields.io/badge/dataset-passing-green.svg)](https://shields.io/)
 
 Building LeNet-5 by pytorch and use MNIST dataset.
+[**Jupyter notebook version**](./resources/mnist_tutorial.ipynb) and
+[**PPT**](./resources/MNIST_TUTORIAL.pdf) are available in `resources/` folder.
 
 ## Structure
 
 ```text
 pytorch_intro/
+├── resources
+├── submission
+├── data
 ├── main.py
 ├── model.py
-├── readme.md
-├── requirements.txt
-├── tree.txt
 └── utils.py
 ```
 
@@ -27,10 +29,10 @@ pytorch_intro/
 3. torchsummary
 4. tqdm
 
-*Not recommended:*
+*Requirements is not recommended:* You should check your GPU for install proper version of Pytorch.
 
 ```bash
-#pip install -r requirements.txt
+#pip install -r requirements.txt # this may arise package error
 ```
 
 ## RUN
@@ -38,7 +40,7 @@ pytorch_intro/
 **Clone repo:**
 
 ```bash
-https://github.com/maglili/pytorch_intro.git
+https://github.com/cosbi-nckuee/lab-training.git
 ```
 
 **Parameters detail:**
